@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
-let connection = mongoose.connect('mongodb://localhost:27017/student_management')
+mongoose.set('strictQuery', true);
 
-connection.connect((err) =>{
-    if(err) throw err;
-    console.log(' MongoDB is connected ')
-
-})
-
-
-module.exports = connection;
+mongoose.connect('mongodb://localhost:27017/student_management'
+// , {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true
+// }
+)
+  .then(() => {
+    console.log('MongoDB is connected');
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+  });

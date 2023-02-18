@@ -1,6 +1,7 @@
 const http = require("http");
 const app = require("./app");
-const env = require("dotenv") ;
+const env = require("dotenv");
+require('./db/conn');
 env.config({path:"src/config/config.env"})
 const PORT = process.env.PORT || 5000
 const server = http.createServer(app);
